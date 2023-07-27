@@ -2,7 +2,7 @@ version: '3'
 
 services:
   tds-default:
-    image: unidata/thredds-docker:5.5-SNAPSHOT
+    image: thredds-performance-tests:5.5-SNAPSHOT
     ports:
       - "8080:8080"
       - "443:8443"
@@ -18,7 +18,7 @@ services:
       - "compose.env"
 
   tds-no-caching:
-    image: unidata/thredds-docker:5.5-SNAPSHOT
+    image: thredds-performance-tests:5.5-SNAPSHOT
     ports:
       - "8080:8080"
       - "443:8443"
