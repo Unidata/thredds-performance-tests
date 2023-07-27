@@ -8,16 +8,31 @@
 
 Requires docker and docker-compose.
 
+We build a TDS docker image so we are sure to get the latest snapshot. For now, we don't include the netcdf-c library, as that takes 30 minutes to build.
+
 Build the testing docker image:
 ```
 docker build -t thredds-performance-tests:5.5-SNAPSHOT .
 ```
 
-To start TDS with caching `./start-default.sh` or without caching `./start-no-caching.sh`.
+To start TDS with caching
+```
+./start-default.sh
+```
+or without caching
+```
+./start-no-caching.sh
+``````
 
-Currently single tests can be run with e.g. `./test.sh`
+Currently, single tests can be run with e.g. 
+```
+./test.sh
+```
 
-To stop: `./stop.sh`
+To stop:
+```
+./stop.sh
+```
 
 ## TODO:
 - mount test data
