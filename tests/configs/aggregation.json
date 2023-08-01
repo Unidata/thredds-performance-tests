@@ -1,0 +1,13 @@
+{
+    "name" : "Aggregation Tests",
+    "id" : "aggregation",
+    "description" : "",
+    "tests" : [
+        {
+            "name" : "Simple Aggregation with opendap",
+            "id" : "aggregation_opendap",
+            "description" : "",
+            "url" : "http://localhost:8080/thredds/dodsC/aggregation?T[0:1:0][0:1:0][0:1:0]"
+        }
+    ]
+}

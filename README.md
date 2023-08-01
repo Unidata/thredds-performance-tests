@@ -4,7 +4,7 @@
 - locally do performance testing before and after a fix
 - automated performance regression tests
 
-## To run:
+## To run the TDS:
 
 Requires docker and docker-compose.
 
@@ -24,14 +24,26 @@ or without caching
 ./start-no-caching.sh
 ``````
 
-Currently, single tests can be run with e.g. 
-```
-./test.sh
-```
-
 To stop:
 ```
 ./stop.sh
+```
+
+## To run the tests:
+
+### With docker
+```
+cd tests/
+docker build -t performance-tests .
+docker run performance-tests
+```
+
+### With local python environment
+Must have python3 and pip installed.
+```
+cd tests/
+pip install -r requirements.txt
+./run.py
 ```
 
 ## TODO:
