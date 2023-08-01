@@ -10,7 +10,7 @@ Requires docker and docker-compose.
 
 We build a TDS docker image so we are sure to get the latest snapshot. For now, we don't include the netcdf-c library, as that takes 30 minutes to build.
 
-Build the testing docker image:
+In the tds directory (`cd tds/`), build the testing docker image:
 ```
 docker build -t thredds-performance-tests:5.5-SNAPSHOT .
 ```
@@ -35,7 +35,7 @@ To stop:
 ```
 cd tests/
 docker build -t performance-tests .
-docker run performance-tests
+docker run --rm performance-tests
 ```
 
 ### With local python environment
