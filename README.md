@@ -46,6 +46,10 @@ pip install -r requirements.txt
 ./run.py
 ```
 
+## To add a test case
+
+Note that the response code is not currently checked.
+
 ## TODO:
 - mount test data
 - all tests run with python script
