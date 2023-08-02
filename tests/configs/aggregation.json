@@ -8,6 +8,12 @@
             "id" : "aggregation_opendap",
             "description" : "",
             "url" : "dodsC/aggregation.ascii"
+        },
+        {
+            "name" : "Simple Aggregation with NCSS",
+            "id" : "aggregation_ncss",
+            "description" : "",
+            "url" : "ncss/grid/aggregation?var=T&north=41.500&west=-110.000&east=-102.000&south=38.500&horizStride=1&time=2000-02-28T00:00:00Z&accept=netcdf3"
         }
     ]
 }

@@ -16,6 +16,10 @@
         <netcdf location="content/testdata/jan.nc"/>
         <netcdf location="content/testdata/feb.nc"/>
       </aggregation>
+      <variable name="time">
+        <attribute name="units" value="days since 2000-01-01 00:00"/>
+        <attribute name="_CoordinateAxisType" value="Time" />
+      </variable>
     </netcdf>
   </dataset>
 
