@@ -31,6 +31,11 @@ To stop:
 
 ## To run the tests:
 
+For info about the tests parameters that can be set, see
+```
+./tests/run.py --help
+```
+
 ### With docker
 ```
 cd tests/
@@ -46,13 +51,16 @@ pip install -r requirements.txt
 ./run.py
 ```
 
+The results of the tests are written to `tests/results/results-timestamp.csv`
+
 ## To add a test case
 
-Note that the response code is not currently checked.
+- Either add new catalog to `tds/thredds/catalogs` to be picked up by the `catalogScan`
+or else add a file to `tds/data` to be picked up by the `datasetScan`.
+- Add a new json file or append to the existing json configs in `tests/configs`, including an "id" for the test and what url will be hit.
+Note that the response code is not currently checked in the tests
 
 ## TODO:
 - mount test data
-- all tests run with python script
-- results written to database
-- automated run process on jenkins
+- automated run process (starting/ stopping tds)
 - docker build from local war file instead of from nexus
