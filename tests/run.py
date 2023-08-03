@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import glob
-import io
 import json
 import jsonschema
+import logging
 import os
 import pandas as pd
 import subprocess
@@ -74,7 +74,9 @@ def run_tests(test_configs):
         for test in tests:
             url = test["url"]
             with tempfile.NamedTemporaryFile() as out_file:
-                subprocess.run(["ab", "-n", str(REPEAT), "-e", out_file.name, BASE_URL + url])
+                out = subprocess.run(["ab", "-n", str(REPEAT), "-e", out_file.name, BASE_URL + url], capture_output=True, text=True)
+                logging.info(out.stdout)
+                logging.info(out.stderr)
                 test_df = make_df(out_file, test)
 
             df_list.append(test_df)
@@ -98,7 +100,9 @@ def parse_cli_args():
     pass
 
 def main():
+    logging.basicConfig(filename=RESULTS_DIR+"run.log", level=logging.INFO)
     os.makedirs(RESULTS_DIR, exist_ok=True)
+
     test_configs = parse_and_validate_configs()
     df = run_tests(test_configs)
     write_to_csv(df)
