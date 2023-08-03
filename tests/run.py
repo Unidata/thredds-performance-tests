@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
 import glob
+import io
 import json
 import jsonschema
 import os
 import pandas as pd
+import subprocess
 import time
 
 CONFIG_SCHEMA = {
@@ -50,7 +52,7 @@ BASE_URL = "http://localhost:8080/thredds/"
 CONFIG_DIR = "./configs/"
 RESULTS_DIR = "./results/"
 TIME = time.strftime("%Y%m%d-%H%M")
-AB_COMMAND = "ab -t 10 "
+REPEAT = 1
 
 def parse_and_validate_configs():
     output = {}
@@ -70,17 +72,21 @@ def run_tests(test_configs):
         tests = config["tests"]
         for test in tests:
             url = test["url"]
-            out_filename = RESULTS_DIR + test["id"] + ".csv"
-            command = AB_COMMAND + "-e " + out_filename + " " + BASE_URL + url
-            os.system(command)
+            out = subprocess.run(["ab", "-n", str(REPEAT), "-e", "/dev/stdout", BASE_URL + url], capture_output=True, text=True)
 
-            test_df = pd.read_csv(out_filename)
-            test_df.insert(0, "time_run", TIME)
-            test_df.insert(0, "test_id", test["id"])
+            test_df = make_df(out.stdout, test["id"])
             df_list.append(test_df)
 
     df = pd.concat(df_list)
-    print(df.head())
+    return df
+
+def make_df(output, test_id):
+    start_index = output.index("Percentage served")
+    end_index = output.index("..done")
+    df = pd.read_csv(io.StringIO(output[start_index:end_index]))
+
+    df.insert(0, "time_run", TIME)
+    df.insert(0, "test_id", test_id)
     return df
 
 def write_to_csv(df):
@@ -90,8 +96,8 @@ def parse_cli_args():
     pass
 
 def main():
+    os.makedirs(RESULTS_DIR, exist_ok=True)
     test_configs = parse_and_validate_configs()
-    print(test_configs)
     df = run_tests(test_configs)
     write_to_csv(df)
 
