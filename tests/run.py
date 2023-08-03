@@ -7,6 +7,7 @@ import jsonschema
 import logging
 import os
 import pandas as pd
+import requests
 import subprocess
 import tempfile
 import time
@@ -132,9 +133,18 @@ def parse_cli_args():
     return parser.parse_args()
 
 
+def check_connection():
+    try:
+        requests.get(BASE_URL)
+    except Exception:
+        raise ConnectionError("Cannot connect to TDS at: " + BASE_URL)
+
+
 def main():
     os.makedirs(RESULTS_DIR, exist_ok=True)
     logging.basicConfig(filename=RESULTS_DIR + "run.log", level=logging.INFO)
+
+    check_connection()
 
     args = parse_cli_args()
     test_configs = parse_and_validate_configs()
