@@ -130,8 +130,8 @@ def parse_cli_args():
 
 
 def main():
-    logging.basicConfig(filename=RESULTS_DIR + "run.log", level=logging.INFO)
     os.makedirs(RESULTS_DIR, exist_ok=True)
+    logging.basicConfig(filename=RESULTS_DIR + "run.log", level=logging.INFO)
 
     args = parse_cli_args()
     test_configs = parse_and_validate_configs()
