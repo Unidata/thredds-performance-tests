@@ -40,7 +40,7 @@ For info about the tests parameters that can be set, see
 ```
 cd tests/
 docker build -t performance-tests:latest .
-docker run --rm --network="host" performance-tests
+docker run --rm --network="host" -v ./results/:/usr/src/app/results/ performance-tests
 ```
 
 ### With local python environment
