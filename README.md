@@ -39,12 +39,12 @@ For info about the tests parameters that can be set, see
 ### With docker
 ```
 cd tests/
-docker build -t performance-tests .
-docker run --rm performance-tests
+docker build -t performance-tests:latest .
+docker run --rm --network="host" performance-tests
 ```
 
 ### With local python environment
-Must have python3 and pip installed.
+Must have python3, pip, and ab (ApacheBench) installed.
 ```
 cd tests/
 pip install -r requirements.txt
