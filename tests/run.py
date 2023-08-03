@@ -76,28 +76,31 @@ def run_tests(test_configs, args):
         tests = config["tests"]
         for test in tests:
             url = test["url"]
-            with tempfile.NamedTemporaryFile() as out_file:
-                command = [
-                    "ab",
-                    "-n",
-                    str(args.requests),
-                    "-e",
-                    out_file.name,
-                    BASE_URL + url
-                ]
-                out = subprocess.run(
-                    command,
-                    capture_output=True,
-                    text=True)
-
-                logging.info(out.stdout)
-                logging.info(out.stderr)
-                test_df = make_df(out_file, test)
-
+            test_df = run_test(url, test, args)
             df_list.append(test_df)
 
     df = pd.concat(df_list)
     return df
+
+
+def run_test(url, test, args):
+    with tempfile.NamedTemporaryFile() as out_file:
+        command = [
+            "ab",
+            "-n",
+            str(args.requests),
+            "-e",
+            out_file.name,
+            BASE_URL + url
+        ]
+        out = subprocess.run(
+            command,
+            capture_output=True,
+            text=True)
+
+        logging.info(out.stdout)
+        logging.info(out.stderr)
+        return make_df(out_file, test)
 
 
 def make_df(file, test):
