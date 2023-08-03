@@ -7,6 +7,7 @@ import jsonschema
 import os
 import pandas as pd
 import subprocess
+import tempfile
 import time
 
 CONFIG_SCHEMA = {
@@ -52,7 +53,7 @@ BASE_URL = "http://localhost:8080/thredds/"
 CONFIG_DIR = "./configs/"
 RESULTS_DIR = "./results/"
 TIME = time.strftime("%Y%m%d-%H%M")
-REPEAT = 1
+REPEAT = 1000
 
 def parse_and_validate_configs():
     output = {}
@@ -72,21 +73,22 @@ def run_tests(test_configs):
         tests = config["tests"]
         for test in tests:
             url = test["url"]
-            out = subprocess.run(["ab", "-n", str(REPEAT), "-e", "/dev/stdout", BASE_URL + url], capture_output=True, text=True)
+            with tempfile.NamedTemporaryFile() as out_file:
+                subprocess.run(["ab", "-n", str(REPEAT), "-e", out_file.name, BASE_URL + url])
+                test_df = make_df(out_file, test)
 
-            test_df = make_df(out.stdout, test["id"])
             df_list.append(test_df)
 
     df = pd.concat(df_list)
     return df
 
-def make_df(output, test_id):
-    start_index = output.index("Percentage served")
-    end_index = output.index("..done")
-    df = pd.read_csv(io.StringIO(output[start_index:end_index]))
+def make_df(file, test):
+    df = pd.read_csv(file)
 
     df.insert(0, "time_run", TIME)
-    df.insert(0, "test_id", test_id)
+    df.insert(0, "description", test["description"])
+    df.insert(0, "name", test["name"])
+    df.insert(0, "id", test["id"])
     return df
 
 def write_to_csv(df):
