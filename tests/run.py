@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import glob
 import json
 import jsonschema
@@ -53,7 +54,7 @@ BASE_URL = "http://localhost:8080/thredds/"
 CONFIG_DIR = "./configs/"
 RESULTS_DIR = "./results/"
 TIME = time.strftime("%Y%m%d-%H%M")
-REPEAT = 1000
+REQUESTS = 1000
 
 def parse_and_validate_configs():
     output = {}
@@ -66,7 +67,7 @@ def parse_and_validate_configs():
 
     return output
 
-def run_tests(test_configs):
+def run_tests(test_configs, args):
     df_list = []
 
     for filename, config in test_configs.items():
@@ -74,7 +75,7 @@ def run_tests(test_configs):
         for test in tests:
             url = test["url"]
             with tempfile.NamedTemporaryFile() as out_file:
-                out = subprocess.run(["ab", "-n", str(REPEAT), "-e", out_file.name, BASE_URL + url], capture_output=True, text=True)
+                out = subprocess.run(["ab", "-n", str(args.requests), "-e", out_file.name, BASE_URL + url], capture_output=True, text=True)
                 logging.info(out.stdout)
                 logging.info(out.stderr)
                 test_df = make_df(out_file, test)
@@ -97,14 +98,17 @@ def write_to_csv(df):
     df.to_csv(RESULTS_DIR + "results-" + TIME + ".csv", index=False)
 
 def parse_cli_args():
-    pass
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("-n", "--requests", nargs="?", default=REQUESTS, type=int, help="number of requests to execute for each test")
+    return parser.parse_args()
 
 def main():
     logging.basicConfig(filename=RESULTS_DIR+"run.log", level=logging.INFO)
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
+    args = parse_cli_args()
     test_configs = parse_and_validate_configs()
-    df = run_tests(test_configs)
+    df = run_tests(test_configs, args)
     write_to_csv(df)
 
 if __name__ == "__main__":
