@@ -63,5 +63,7 @@ Note that the response code is not currently checked in the tests but you can se
 
 ## TODO:
 - mount test data
-- automated run process (starting/ stopping tds)
+- automated run process (starting tds, running tests, stopping tds)
 - docker build from local war file instead of from nexus
+- add TDS build info (build date and version) to results
+- cli interface to run subset of tests
