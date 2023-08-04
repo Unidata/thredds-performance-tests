@@ -88,10 +88,10 @@ def run_test(url, test, args):
     with tempfile.NamedTemporaryFile() as out_file:
         command = [
             "ab",
-            "-n",
-            str(args.requests),
             "-t",
             str(args.timelimit),
+            "-n",
+            str(args.requests),
             "-e",
             out_file.name,
             BASE_URL + url
@@ -130,7 +130,7 @@ def parse_cli_args():
         nargs="?",
         default=REQUESTS,
         type=int,
-        help="number of requests to execute for each test"
+        help="Number of requests to execute for each test."
     )
     parser.add_argument(
         "-t",
@@ -138,7 +138,8 @@ def parse_cli_args():
         nargs="?",
         default=TIMELIMIT,
         type=int,
-        help="maximum seconds per tests"
+        help="Maximum seconds per tests."
+        + " The number of requests has precedence over this."
     )
     return parser.parse_args()
 
