@@ -56,6 +56,7 @@ CONFIG_DIR = "./configs/"
 RESULTS_DIR = "./results/"
 TIME = time.strftime("%Y%m%d-%H%M")
 REQUESTS = 1000
+TIMELIMIT = 10
 
 
 def parse_and_validate_configs():
@@ -89,6 +90,8 @@ def run_test(url, test, args):
             "ab",
             "-n",
             str(args.requests),
+            "-t",
+            str(args.timelimit),
             "-e",
             out_file.name,
             BASE_URL + url
@@ -128,6 +131,14 @@ def parse_cli_args():
         default=REQUESTS,
         type=int,
         help="number of requests to execute for each test"
+    )
+    parser.add_argument(
+        "-t",
+        "--timelimit",
+        nargs="?",
+        default=TIMELIMIT,
+        type=int,
+        help="maximum seconds per tests"
     )
     return parser.parse_args()
 
