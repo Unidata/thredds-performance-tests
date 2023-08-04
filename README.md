@@ -51,19 +51,19 @@ pip install -r requirements.txt
 ./run.py
 ```
 
-The results of the tests are written to `tests/results/results-timestamp.csv`
+The results of the tests are written to `tests/results/results.csv`
 
 ## To add a test case
 
 - Either add new catalog to `tds/thredds/catalogs` to be picked up by the `catalogScan`
 or else add a file to `tds/data` to be picked up by the `datasetScan`.
-- Add a new json file or append to the existing json configs in `tests/configs`, including an "id" for the test and what url will be hit.
-The test id should be unique.
-Note that the response code is not currently checked in the tests but you can see if tests failed in the logs.
+- Add a new json file or append to the existing json configs in `tests/configs`, including an "id" and "name" for the test and what url will be hit.
+The test id should be unique. The JSON schema used to validate a test is located in `run.py`.
+Note that the response code is not currently checked in the tests but you can see if tests failed in the logs (`results.run.log`).
 
 ## TODO:
 - mount test data
 - automated run process (starting tds, running tests, stopping tds)
-- docker build from local war file instead of from nexus
-- add TDS build info (build date and version) to results
+- option to build TDS docker image from local war file instead of from nexus
+- add TDS build info (at least the build date and version) to results
 - cli interface to run subset of tests
