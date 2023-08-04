@@ -109,7 +109,7 @@ def run_test(url, test, args):
 def make_df(file, test):
     df = pd.read_csv(file)
 
-    df.insert(0, "time_run", TIME)
+    df.insert(0, "datetime", TIME)
     df.insert(0, "description", test["description"])
     df.insert(0, "name", test["name"])
     df.insert(0, "id", test["id"])
