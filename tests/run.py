@@ -115,7 +115,7 @@ def make_df(file, test):
 
 
 def write_to_csv(df):
-    df.to_csv(RESULTS_DIR + "results-" + TIME + ".csv", index=False)
+    df.to_csv(RESULTS_DIR + "results.csv", index=False)
 
 
 def parse_cli_args():
