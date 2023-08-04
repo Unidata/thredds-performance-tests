@@ -138,8 +138,7 @@ def parse_cli_args():
         nargs="?",
         default=TIMELIMIT,
         type=int,
-        help="Maximum seconds per tests."
-        + " The number of requests has precedence over this."
+        help="Maximum seconds to spend per tests."
     )
     return parser.parse_args()
 
