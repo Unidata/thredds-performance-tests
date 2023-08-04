@@ -80,8 +80,7 @@ def run_tests(test_configs, args):
             test_df = run_test(url, test, args)
             df_list.append(test_df)
 
-    df = pd.concat(df_list)
-    return df
+    return pd.concat(df_list)
 
 
 def run_test(url, test, args):
