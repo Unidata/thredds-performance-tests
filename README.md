@@ -58,7 +58,8 @@ The results of the tests are written to `tests/results/results-timestamp.csv`
 - Either add new catalog to `tds/thredds/catalogs` to be picked up by the `catalogScan`
 or else add a file to `tds/data` to be picked up by the `datasetScan`.
 - Add a new json file or append to the existing json configs in `tests/configs`, including an "id" for the test and what url will be hit.
-Note that the response code is not currently checked in the tests
+The test id should be unique.
+Note that the response code is not currently checked in the tests but you can see if tests failed in the logs.
 
 ## TODO:
 - mount test data
