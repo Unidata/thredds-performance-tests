@@ -5,7 +5,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.unidata.ucar.edu/namespaces/thredds/InvCatalog/v1.0
            https://schemas.unidata.ucar.edu/thredds/InvCatalog.1.0.6.xsd">
-  
+
   <service name="all" base="" serviceType="compound">
     <service name="odap" serviceType="OpenDAP" base="/thredds/dodsC/"/>
     <service name="dap4" serviceType="DAP4" base="/thredds/dap4/"/>
