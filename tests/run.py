@@ -59,6 +59,13 @@ REQUESTS = 1000
 TIMELIMIT = 10
 
 
+def check_ids_are_unique(configs):
+    ids = [test["id"] for k, v in configs.items() for test in v["tests"]]
+    unique = len(set(ids)) == len(ids)
+    if not unique:
+        raise ValueError("Expected test ids to be unique, but found:", ids)
+
+
 def parse_and_validate_configs():
     output = {}
 
@@ -68,6 +75,7 @@ def parse_and_validate_configs():
             jsonschema.validate(json_contents, schema=CONFIG_SCHEMA)
             output[config_file] = json_contents
 
+    check_ids_are_unique(output)
     return output
 
 
