@@ -153,7 +153,10 @@ def check_connection():
 
 def main():
     os.makedirs(RESULTS_DIR, exist_ok=True)
-    logging.basicConfig(filename=RESULTS_DIR + "run.log", level=logging.INFO)
+    logging.basicConfig(
+        filename=RESULTS_DIR + "run.log",
+        level=logging.INFO,
+        filemode="w")
 
     check_connection()
 
