@@ -21,6 +21,12 @@ In the tds directory (`cd tds/`), build the testing docker image:
 docker build -t thredds-performance-tests:5.5-SNAPSHOT .
 ```
 
+To build using a local war file instead of the one from nexus, use:
+```
+cp /path/to/my/thredds.war local-war-file/
+docker build -t thredds-performance-tests:5.5-SNAPSHOT --build-arg USE_LOCAL_WAR=true .
+```
+
 To start TDS with caching
 ```
 ./start-default.sh
@@ -69,6 +75,5 @@ Note that the response code is not currently checked in the tests but you can se
 
 ## TODO:
 - mount test data
-- option to build TDS docker image from local war file instead of from nexus
 - add TDS build info (at least the build date and version) to results
 - cli interface to run subset of tests
