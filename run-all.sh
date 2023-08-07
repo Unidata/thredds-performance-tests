@@ -8,7 +8,8 @@ until docker inspect --format "{{json .State.Health.Status }}" thredds-performan
 | grep -m 1 "healthy"; do sleep 1 ; done
 
 cd ../tests/
-./run.py
+docker build -t performance-tests:latest .
+docker run --rm --network="host" -v ./results/:/usr/src/app/results/ performance-tests
 
 cd ../tds/
 docker-compose down
