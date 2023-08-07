@@ -165,10 +165,10 @@ def main():
         level=logging.INFO,
         filemode="w")
 
-    check_connection()
-
     args = parse_cli_args()
     test_configs = parse_and_validate_configs()
+
+    check_connection()
     df = run_tests(test_configs, args)
     write_to_csv(df)
 
