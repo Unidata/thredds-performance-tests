@@ -4,6 +4,12 @@
 - locally do performance testing before and after a fix
 - automated performance regression tests
 
+## To run:
+To start TDS (with no caching config), run all tests, and stop TDS:
+```
+./run-all.sh
+```
+
 ## To run the TDS:
 
 Requires docker and docker-compose.
@@ -63,7 +69,6 @@ Note that the response code is not currently checked in the tests but you can se
 
 ## TODO:
 - mount test data
-- automated run process (starting tds, running tests, stopping tds)
 - option to build TDS docker image from local war file instead of from nexus
 - add TDS build info (at least the build date and version) to results
 - cli interface to run subset of tests
