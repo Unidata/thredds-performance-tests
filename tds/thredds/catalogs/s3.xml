@@ -4,10 +4,10 @@
   xmlns:ncml="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2" version="1.2">
 
     <datasetScan name="Test S3 dataset scan"
-        ID="testS3DatasetScan"
-        path="s3-dataset-scan"
-        location="cdms3:thredds-test-data#delimiter=/">
-        <serviceName>all</serviceName>
+                 ID="testS3DatasetScan"
+                 path="s3-dataset-scan"
+                 location="cdms3:thredds-test-data#delimiter=/">
+      <serviceName>all</serviceName>
     </datasetScan>
 
 </catalog>
