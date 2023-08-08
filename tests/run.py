@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import csv
 import glob
 import json
 import jsonschema
@@ -125,7 +126,23 @@ def make_df(file, test):
 
 
 def write_to_csv(df):
-    df.to_csv(RESULTS_DIR + "results.csv", index=False)
+    median_time = df.loc[df['Percentage served'] == 50]
+
+    selector = {
+        "id": "id",
+        "name": "name",
+        "description": "description",
+        "datetime": "datetime",
+        "Time in ms": "median time (ms)"
+    }
+    to_write = median_time.rename(columns=selector)[[*selector.values()]]
+
+    to_write.to_csv(
+        RESULTS_DIR + "results.csv",
+        index=False,
+        quotechar='"',
+        quoting=csv.QUOTE_NONNUMERIC
+    )
 
 
 def parse_cli_args():
