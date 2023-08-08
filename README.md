@@ -5,14 +5,14 @@
 - automated performance regression tests
 
 ## To run:
+Requires docker and docker-compose.
+
 To start TDS (with no caching config), run all tests, and stop TDS:
 ```
 ./run-all.sh
 ```
 
 ## To run the TDS:
-
-Requires docker and docker-compose.
 
 We build a TDS docker image so we are sure to get the latest snapshot. For now, we don't include the netcdf-c library, as that takes 30 minutes to build.
 
@@ -43,11 +43,6 @@ To stop:
 
 ## To run the tests:
 
-For info about the tests parameters that can be set, see
-```
-./tests/run.py --help
-```
-
 ### With docker
 ```
 cd tests/
@@ -57,6 +52,13 @@ docker run --rm --network="host" -v ./results/:/usr/src/app/results/ performance
 
 ### With local python environment
 Must have python3, pip, and ab (ApacheBench) installed.
+
+For info about the tests parameters that can be set, see
+```
+./tests/run.py --help
+```
+
+To run:
 ```
 cd tests/
 pip install -r requirements.txt
