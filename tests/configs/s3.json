@@ -1,0 +1,19 @@
+{
+    "name" : "S3 Tests",
+    "id" : "s3",
+    "description" : "Test S3 files using the thredds-test-data bucket",
+    "tests" : [
+        {
+            "name" : "S3 netcdf file with OPeNDAP",
+            "id" : "s3_netcdf_opendap",
+            "description" : "S3 netCDF file downloaded through OPenDAP",
+            "url" : "dodsC/s3-dataset-scan/testData.nc.dods"
+        },
+        {
+            "name" : "S3 netcdf file with NCSS",
+            "id" : "s3_netcdf_ncss",
+            "description" : "S3 netCDF file downloaded through NCSS",
+            "url" : "ncss/grid/s3-dataset-scan/testData.nc?var=Z_sfc&north=80.881&west=176.505&east=328.456&south=19.673&horizStride=1&time_start=2003-09-25T00:00:00Z&time_end=2003-09-25T00:00:00Z&&&accept=netcdf3"
+        }
+    ]
+}

@@ -1,0 +1,3 @@
+jsonschema
+pandas
+requests

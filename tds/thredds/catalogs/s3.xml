@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog name="Test S3"
+  xmlns="http://www.unidata.ucar.edu/namespaces/thredds/InvCatalog/v1.0"
+  xmlns:ncml="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2" version="1.2">
+
+    <datasetScan name="Test S3 dataset scan"
+                 ID="testS3DatasetScan"
+                 path="s3-dataset-scan"
+                 location="cdms3:thredds-test-data#delimiter=/">
+      <serviceName>all</serviceName>
+    </datasetScan>
+
+</catalog>

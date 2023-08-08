@@ -1,0 +1,19 @@
+{
+    "name" : "Aggregation tests",
+    "id" : "aggregation",
+    "description" : "TODO-- make this aggregation dataset larger",
+    "tests" : [
+        {
+            "name" : "Simple aggregation with OPeNDAP",
+            "id" : "aggregation_opendap",
+            "description" : "Small aggregation dataset opened as ascii",
+            "url" : "dodsC/aggregation.ascii"
+        },
+        {
+            "name" : "Simple aggregation with NCSS",
+            "id" : "aggregation_ncss",
+            "description" : "Small aggregation dataset downloaded as netcdf3",
+            "url" : "ncss/grid/aggregation?var=T&north=41.500&west=-110.000&east=-102.000&south=38.500&horizStride=1&time=2000-02-28T00:00:00Z&accept=netcdf3"
+        }
+    ]
+}
