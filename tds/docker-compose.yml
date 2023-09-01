@@ -7,7 +7,7 @@ services:
       - "8080:8080"
       - "443:8443"
       - "8443:8443"
-    container_name: thredds-performance-tests-default
+    container_name: thredds-performance-tests
     volumes:
       - ./thredds/catalog.xml:/usr/local/tomcat/content/thredds/catalog.xml
       - ./thredds/threddsConfigDefault.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
@@ -23,7 +23,7 @@ services:
       - "8080:8080"
       - "443:8443"
       - "8443:8443"
-    container_name: thredds-performance-tests-no-caching
+    container_name: thredds-performance-tests
     volumes:
       - ./thredds/catalog.xml:/usr/local/tomcat/content/thredds/catalog.xml
       - ./thredds/threddsConfigNoCaching.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
