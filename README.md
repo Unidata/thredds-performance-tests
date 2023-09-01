@@ -77,5 +77,4 @@ Note that the response code is not currently checked in the tests but you can se
 
 ## TODO:
 - mount test data
-- add TDS build info (at least the build date and version) to results
 - cli interface to run subset of tests

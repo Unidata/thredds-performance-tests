@@ -55,6 +55,7 @@ CONFIG_SCHEMA = {
 BASE_URL = "http://localhost:8080/thredds/"
 CONFIG_DIR = "./configs/"
 RESULTS_DIR = "./results/"
+VERSION_FILE = "./version/MANIFEST.MF"
 TIME = time.strftime("%Y%m%d-%H%M")
 REQUESTS = 1000
 TIMELIMIT = 10
@@ -175,6 +176,29 @@ def check_connection():
         raise ConnectionError("Cannot connect to TDS at: " + BASE_URL)
 
 
+def write_tds_version():
+    with open(VERSION_FILE, "r") as f:
+        contents = f.read().strip().split("\n")
+        version_dict = dict(item.split(": ") for item in contents)
+        selection = [
+            "Implementation-Version",
+            "Created-By",
+            "Build-Jdk",
+            "Built-By",
+            "Built-On"
+        ]
+        selected_dict = {key: [version_dict[key]] for key in selection}
+        df = pd.DataFrame(data=selected_dict)
+        df.insert(0, "datetime", TIME)
+
+        df.to_csv(
+            RESULTS_DIR + "version.csv",
+            index=False,
+            quotechar='"',
+            quoting=csv.QUOTE_NONNUMERIC
+        )
+
+
 def main():
     os.makedirs(RESULTS_DIR, exist_ok=True)
     logging.basicConfig(
@@ -186,6 +210,7 @@ def main():
     test_configs = parse_and_validate_configs()
 
     check_connection()
+    write_tds_version()
     df = run_tests(test_configs, args)
     write_to_csv(df)
 
