@@ -1,19 +1,43 @@
 {
     "name" : "Aggregation tests",
     "id" : "aggregation",
-    "description" : "TODO-- make this aggregation dataset larger",
+    "description" : "Test aggregations",
     "tests" : [
         {
-            "name" : "Simple aggregation with OPeNDAP",
-            "id" : "aggregation_opendap",
-            "description" : "Small aggregation dataset opened as ascii",
-            "url" : "dodsC/aggregation.ascii"
+            "name" : "GFS aggregation dataset page with NCSS",
+            "id" : "gfs_aggregation_dataset",
+            "description" : "Load NCSS dataset page for GFS aggregation",
+            "url" : "ncss/grid/gfsAggregation/dataset.html"
         },
         {
-            "name" : "Simple aggregation with NCSS",
-            "id" : "aggregation_ncss",
-            "description" : "Small aggregation dataset downloaded as netcdf3",
-            "url" : "ncss/grid/aggregation?var=T&north=41.500&west=-110.000&east=-102.000&south=38.500&horizStride=1&time=2000-02-28T00:00:00Z&accept=netcdf3"
+            "name" : "GFS aggregation with NCSS",
+            "id" : "gfs_aggregation",
+            "description" : "Write GFS aggregation dataset as netcdf3 through NCSS",
+            "url" : "ncss/grid/gfsAggregation?var=Relative_humidity_height_above_ground&var=Temperature_height_above_ground&var=Relative_humidity&var=Temperature&var=Pressure&var=Pressure_reduced_to_MSL&var=Total_precipitation&north=61.582&west=-153.616&east=-48.633&south=11.737&horizStride=1&time_start=2012-04-18T18:00:00Z&time_end=2012-04-19T12:00:00Z&accept=netcdf3"
+        },
+        {
+            "name" : "Large aggregation scan dataset page with NCSS",
+            "id" : "large_aggregation_scan_dataset",
+            "description" : "Load NCSS dataset page for large aggregation with scan",
+            "url" : "ncss/grid/largeAggregationScan/dataset.html"
+        },
+        {
+            "name" : "Large aggregation scan with NCSS",
+            "id" : "large_aggregation_scan",
+            "description" : "Write large aggregation dataset with scan as netcdf3 through NCSS",
+            "url" : "ncss/grid/largeAggregationScan?var=var&north=9.500&west=-.500&east=9.500&south=-.500&horizStride=1&time_start=2000-01-01T00:00:00Z&time_end=2002-09-26T00:00:00Z&accept=netcdf3"
+        },
+        {
+            "name" : "Large aggregation dataset page with NCSS",
+            "id" : "large_aggregation_dataset",
+            "description" : "Load NCSS dataset page for large aggregation",
+            "url" : "ncss/grid/largeAggregation/dataset.html"
+        },
+        {
+            "name" : "Large aggregation with NCSS",
+            "id" : "large_aggregation",
+            "description" : "Write large aggregation dataset as netcdf3 through NCSS",
+            "url" : "ncss/grid/largeAggregation?var=var&north=9.500&west=-.500&east=9.500&south=-.500&horizStride=1&time_start=2000-01-01T00:00:00Z&time_end=2002-09-26T00:00:00Z&accept=netcdf3"
         }
     ]
 }

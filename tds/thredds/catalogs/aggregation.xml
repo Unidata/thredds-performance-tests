@@ -7,20 +7,135 @@
          xsi:schemaLocation="http://www.unidata.ucar.edu/namespaces/thredds/InvCatalog/v1.0
            https://schemas.unidata.ucar.edu/thredds/InvCatalog.1.0.6.xsd">
 
-  <dataset name="Test simple aggregation"
-           ID="aggregation"
-           urlPath="aggregation">
+  <dataset name="Test GFS aggregation"
+           ID="gfsAggregation"
+           urlPath="gfsAggregation">
     <serviceName>all</serviceName>
     <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
       <aggregation dimName="time" type="joinExisting">
-        <netcdf location="content/testdata/jan.nc"/>
-        <netcdf location="content/testdata/feb.nc"/>
+        <scan location="content/testdata/gfs-aggregation" suffix="*.nc" />
       </aggregation>
-      <variable name="time">
-        <attribute name="units" value="days since 2000-01-01 00:00"/>
-        <attribute name="_CoordinateAxisType" value="Time" />
-      </variable>
     </netcdf>
   </dataset>
 
+  <dataset name="Test large aggregation scan"
+           ID="largeAggregationScan"
+           urlPath="largeAggregationScan">
+    <serviceName>all</serviceName>
+    <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+      <aggregation dimName="time" type="joinExisting">
+        <scan location="content/testdata/large-aggregation" suffix="*.nc" />
+      </aggregation>
+    </netcdf>
+  </dataset>
+
+  <dataset name="Test large aggregation"
+           ID="largeAggregation"
+           urlPath="largeAggregation">
+    <serviceName>all</serviceName>
+    <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+      <aggregation dimName="time" type="joinExisting">
+        <netcdf location="content/testdata/large-aggregation/testAggregation0.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation1.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation2.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation3.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation4.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation5.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation6.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation7.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation8.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation9.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation10.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation11.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation12.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation13.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation14.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation15.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation16.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation17.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation18.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation19.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation20.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation21.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation22.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation23.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation24.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation25.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation26.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation27.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation28.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation29.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation30.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation31.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation32.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation33.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation34.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation35.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation36.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation37.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation38.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation39.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation40.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation41.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation42.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation43.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation44.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation45.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation46.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation47.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation48.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation49.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation50.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation51.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation52.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation53.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation54.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation55.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation56.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation57.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation58.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation59.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation60.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation61.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation62.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation63.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation64.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation65.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation66.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation67.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation68.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation69.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation70.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation71.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation72.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation73.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation74.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation75.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation76.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation77.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation78.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation79.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation80.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation81.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation82.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation83.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation84.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation85.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation86.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation87.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation88.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation89.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation90.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation91.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation92.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation93.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation94.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation95.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation96.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation97.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation98.nc"/>
+        <netcdf location="content/testdata/large-aggregation/testAggregation99.nc"/>
+      </aggregation>
+    </netcdf>
+  </dataset>
 </catalog>
