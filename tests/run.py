@@ -2,16 +2,17 @@
 
 import argparse
 import csv
-from datetime import datetime
 import glob
 import json
-import jsonschema
 import logging
 import os
-import pandas as pd
-import requests
 import subprocess
 import tempfile
+from datetime import datetime
+
+import jsonschema
+import pandas as pd
+import requests
 
 CONFIG_SCHEMA = {
     "type": "object",
