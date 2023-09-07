@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+from datetime import datetime
 import glob
 import json
 import jsonschema
@@ -11,7 +12,6 @@ import pandas as pd
 import requests
 import subprocess
 import tempfile
-import time
 
 CONFIG_SCHEMA = {
     "type": "object",
@@ -56,7 +56,7 @@ BASE_URL = "http://localhost:8080/thredds/"
 CONFIG_DIR = "./configs/"
 RESULTS_DIR = "./results/"
 VERSION_FILE = "./version/MANIFEST.MF"
-TIME = time.strftime("%Y%m%d-%H%M")
+TIME = str(datetime.now().isoformat())
 REQUESTS = 1000
 TIMELIMIT = 10
 
