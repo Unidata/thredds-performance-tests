@@ -13,7 +13,7 @@ services:
       - ./thredds/threddsConfigDefault.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
       - ./thredds/wmsConfigDefault.xml:/usr/local/tomcat/content/thredds/wmsConfig.xml
       - ./thredds/catalogs/:/usr/local/tomcat/content/thredds/catalogs/
-      - ./data/:/usr/local/tomcat/content/thredds/public/testdata/
+      - ${DATA_DIR}:/usr/local/tomcat/content/thredds/public/testdata/
     env_file:
       - "compose.env"
 
@@ -29,6 +29,6 @@ services:
       - ./thredds/threddsConfigNoCaching.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
       - ./thredds/wmsConfigDefault.xml:/usr/local/tomcat/content/thredds/wmsConfig.xml
       - ./thredds/catalogs/:/usr/local/tomcat/content/thredds/catalogs/
-      - ./data/:/usr/local/tomcat/content/thredds/public/testdata/
+      - ${DATA_DIR}:/usr/local/tomcat/content/thredds/public/testdata/
     env_file:
       - "compose.env"

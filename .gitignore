@@ -1,3 +1,4 @@
 tests/results/
-tds/local-war-file/
 tests/version
+tds/local-war-file/
+tds/.env
