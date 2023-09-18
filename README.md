@@ -5,7 +5,7 @@
 - automated performance regression tests
 
 ## To run:
-Requires docker and docker-compose.
+Requires docker and docker compose.
 
 To start TDS (with no caching config), run all tests, and stop TDS:
 ```

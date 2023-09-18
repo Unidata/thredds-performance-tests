@@ -1,2 +1,2 @@
 #!/bin/sh
-docker-compose up -d tds-no-caching
+docker compose up -d tds-no-caching

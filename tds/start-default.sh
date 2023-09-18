@@ -1,2 +1,2 @@
 #!/bin/sh
-docker-compose up -d tds-default
+docker compose up -d tds-default
