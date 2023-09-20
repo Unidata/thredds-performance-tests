@@ -5,7 +5,7 @@
 - automated performance regression tests
 
 ## To run:
-Requires docker and docker-compose.
+Requires docker and docker compose.
 
 Currently the test data is in a sub directory in the [thredds-test-data](https://github.com/Unidata/thredds-test-data). To mount the test data create a file `tds/.env` which contains an environment variable with the proper path, e.g.
 ```
