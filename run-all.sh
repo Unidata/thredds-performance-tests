@@ -5,11 +5,12 @@ docker build -t thredds-performance-tests:5.5-SNAPSHOT .
 docker compose up -d tds-no-caching
 
 until docker inspect --format "{{json .State.Health.Status }}" thredds-performance-tests-no-caching\
-| grep -m 1 "healthy"; do sleep 1 ; done
+| grep -m 1 '"healthy"'; do sleep 1 ; done
 
 cd ../tests/
+mkdir -p results/
 docker build -t performance-tests:latest .
-docker run --rm --network="host" -v ./results/:/usr/src/app/results/ performance-tests
+docker run --rm --network="host" -v ./results/:/usr/src/app/results/ --user $(id -u):$(id -g) performance-tests
 
 cd ../tds/
 docker compose down
