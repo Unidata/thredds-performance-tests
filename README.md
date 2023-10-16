@@ -7,6 +7,11 @@
 ## To run:
 Requires docker and docker compose.
 
+Currently the test data is in a sub directory in the [thredds-test-data](https://github.com/Unidata/thredds-test-data). To mount the test data create a file `tds/.env` which contains an environment variable with the proper path, e.g.
+```
+DATA_DIR=/my/path/to/thredds-test-data/local/thredds-test-data/cdmUnitTest/thredds-performance-tests
+```
+
 To start TDS (with no caching config), run all tests, and stop TDS:
 ```
 ./run-all.sh
@@ -73,9 +78,7 @@ The results of the tests are written to `tests/results/results.csv`
 or else add a file to `tds/data` to be picked up by the `datasetScan`.
 - Add a new json file or append to the existing json configs in `tests/configs`, including an "id" and "name" for the test and what url will be hit.
 The test id should be unique. The JSON schema used to validate a test is located in `run.py`.
-Note that the response code is not currently checked in the tests but you can see if tests failed in the logs (`results/run.log`).
+Note that the response code is not currently checked in the tests but you can see if requests failed in the logs (`results/run.log`).
 
 ## TODO:
-- mount test data
-- add TDS build info (at least the build date and version) to results
 - cli interface to run subset of tests

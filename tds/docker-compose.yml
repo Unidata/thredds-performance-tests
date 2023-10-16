@@ -7,13 +7,13 @@ services:
       - "8080:8080"
       - "443:8443"
       - "8443:8443"
-    container_name: thredds-performance-tests-default
+    container_name: thredds-performance-tests
     volumes:
       - ./thredds/catalog.xml:/usr/local/tomcat/content/thredds/catalog.xml:ro
       - ./thredds/threddsConfigDefault.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml:ro
       - ./thredds/wmsConfigDefault.xml:/usr/local/tomcat/content/thredds/wmsConfig.xml:ro
       - ./thredds/catalogs/:/usr/local/tomcat/content/thredds/catalogs/:ro
-      - ./data/:/usr/local/tomcat/content/thredds/public/testdata/:ro
+      - ${DATA_DIR}:/usr/local/tomcat/content/thredds/public/testdata/:ro
     env_file:
       - "compose.env"
 
@@ -23,12 +23,12 @@ services:
       - "8080:8080"
       - "443:8443"
       - "8443:8443"
-    container_name: thredds-performance-tests-no-caching
+    container_name: thredds-performance-tests
     volumes:
       - ./thredds/catalog.xml:/usr/local/tomcat/content/thredds/catalog.xml:ro
       - ./thredds/threddsConfigNoCaching.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml:ro
       - ./thredds/wmsConfigDefault.xml:/usr/local/tomcat/content/thredds/wmsConfig.xml:ro
       - ./thredds/catalogs/:/usr/local/tomcat/content/thredds/catalogs/:ro
-      - ./data/:/usr/local/tomcat/content/thredds/public/testdata/:ro
+      - ${DATA_DIR}:/usr/local/tomcat/content/thredds/public/testdata/:ro
     env_file:
       - "compose.env"
