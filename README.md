@@ -52,7 +52,7 @@ To stop:
 ```
 cd tests/
 docker build -t performance-tests:latest .
-docker run --rm -v ./results/:/usr/src/app/results/ performance-tests
+docker run --rm --network="host" -v ./results/:/usr/src/app/results/ performance-tests
 ```
 
 ### With local python environment
