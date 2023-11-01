@@ -53,7 +53,7 @@ CONFIG_SCHEMA = {
     }
 }
 
-BASE_URL = "http://localhost:8080/thredds/"
+BASE_URL = "http://host.docker.internal:8080/thredds/"
 CONFIG_DIR = "./configs/"
 RESULTS_DIR = "./results/"
 VERSION_FILE = "./version/MANIFEST.MF"

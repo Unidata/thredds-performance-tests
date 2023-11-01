@@ -15,7 +15,7 @@ docker cp thredds-performance-tests:/usr/local/tomcat/webapps/thredds/META-INF/M
 cd ../tests/
 mkdir -p results/
 docker build -t performance-tests:latest .
-docker run --rm --network="host" -v ./results/:/usr/src/app/results/ --user $(id -u):$(id -g) performance-tests
+docker run --rm -v ./results/:/usr/src/app/results/ --user $(id -u):$(id -g) performance-tests
 
 # stop tds
 cd ../tds/
