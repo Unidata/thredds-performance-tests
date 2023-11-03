@@ -32,16 +32,3 @@ services:
       - ${DATA_DIR}:/usr/local/tomcat/content/thredds/public/testdata/:ro
     env_file:
       - "compose.env"
-
-  tds-no-caching-network-host:
-    image: thredds-performance-tests:5.5-SNAPSHOT
-    network_mode: host
-    container_name: thredds-performance-tests
-    volumes:
-      - ./thredds/catalog.xml:/usr/local/tomcat/content/thredds/catalog.xml:ro
-      - ./thredds/threddsConfigNoCaching.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml:ro
-      - ./thredds/wmsConfigDefault.xml:/usr/local/tomcat/content/thredds/wmsConfig.xml:ro
-      - ./thredds/catalogs/:/usr/local/tomcat/content/thredds/catalogs/:ro
-      - ${DATA_DIR}:/usr/local/tomcat/content/thredds/public/testdata/:ro
-    env_file:
-      - "compose.env"
