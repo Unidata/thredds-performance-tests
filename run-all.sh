@@ -3,7 +3,7 @@
 # start tds
 cd tds/
 docker build -t thredds-performance-tests:5.5-SNAPSHOT .
-docker compose up -d tds-no-caching
+docker compose up -d tds-no-caching-network-host
 until docker inspect --format "{{json .State.Health.Status }}" thredds-performance-tests\
 | grep -m 1 '"healthy"'; do sleep 1 ; done
 
