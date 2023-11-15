@@ -54,9 +54,9 @@ CONFIG_SCHEMA = {
 }
 
 BASE_URL = "http://localhost:8080/thredds/"
-CONFIG_DIR = "./configs/"
-RESULTS_DIR = "./results/"
-VERSION_FILE = "./version/MANIFEST.MF"
+CONFIG_DIR = os.path.join(".", "configs")
+RESULTS_DIR = os.path.join(".", "results")
+VERSION_FILE = os.path.join(".", "version", "MANIFEST.MF")
 TIME = str(datetime.now().isoformat())
 REQUESTS = 1000
 TIMELIMIT = 10
@@ -72,7 +72,7 @@ def check_ids_are_unique(configs):
 def parse_and_validate_configs():
     output = {}
 
-    for config_file in glob.glob(CONFIG_DIR + "*"):
+    for config_file in glob.glob(os.path.join(CONFIG_DIR, "*")):
         with open(config_file, "r") as file_handle:
             json_contents = json.load(file_handle)
             jsonschema.validate(json_contents, schema=CONFIG_SCHEMA)
@@ -141,7 +141,7 @@ def write_to_csv(version_df, df):
     to_write = data_to_write.merge(version_df, on="datetime")
 
     to_write.to_csv(
-        RESULTS_DIR + "results.csv",
+        os.path.join(RESULTS_DIR, "results.csv"),
         index=False,
         quotechar='"',
         quoting=csv.QUOTE_NONNUMERIC
@@ -199,7 +199,7 @@ def get_tds_version():
 def main():
     os.makedirs(RESULTS_DIR, exist_ok=True)
     logging.basicConfig(
-        filename=RESULTS_DIR + "run.log",
+        filename=os.path.join(RESULTS_DIR, "run.log"),
         level=logging.INFO,
         filemode="w")
 
