@@ -127,7 +127,7 @@ def make_df(file, test):
     return df
 
 
-def write_to_csv(df):
+def write_to_csv(version_df, df):
     median_time = df.loc[df['Percentage served'] == 50]
 
     selector = {
@@ -137,7 +137,8 @@ def write_to_csv(df):
         "datetime": "datetime",
         "Time in ms": "median time (ms)"
     }
-    to_write = median_time.rename(columns=selector)[[*selector.values()]]
+    data_to_write = median_time.rename(columns=selector)[[*selector.values()]]
+    to_write = data_to_write.merge(version_df, on="datetime")
 
     to_write.to_csv(
         RESULTS_DIR + "results.csv",
@@ -177,7 +178,7 @@ def check_connection():
         raise ConnectionError("Cannot connect to TDS at: " + BASE_URL)
 
 
-def write_tds_version():
+def get_tds_version():
     with open(VERSION_FILE, "r") as f:
         contents = f.read().strip().split("\n")
         version_dict = dict(item.split(": ") for item in contents)
@@ -192,12 +193,7 @@ def write_tds_version():
         df = pd.DataFrame(data=selected_dict)
         df.insert(0, "datetime", TIME)
 
-        df.to_csv(
-            RESULTS_DIR + "version.csv",
-            index=False,
-            quotechar='"',
-            quoting=csv.QUOTE_NONNUMERIC
-        )
+        return df
 
 
 def main():
@@ -211,9 +207,9 @@ def main():
     test_configs = parse_and_validate_configs()
 
     check_connection()
-    write_tds_version()
+    version_df = get_tds_version()
     df = run_tests(test_configs, args)
-    write_to_csv(df)
+    write_to_csv(version_df, df)
 
 
 if __name__ == "__main__":
