@@ -158,7 +158,7 @@ def parse_cli_args():
         nargs="?",
         default=REQUESTS,
         type=int,
-        help="Number of requests to execute for each test."
+        help="Number of requests to execute for each test case."
     )
     parser.add_argument(
         "-t",
@@ -166,7 +166,7 @@ def parse_cli_args():
         nargs="?",
         default=TIMELIMIT,
         type=int,
-        help="Maximum seconds to spend per tests."
+        help="Maximum seconds to spend per test case."
     )
     return parser.parse_args()
 
