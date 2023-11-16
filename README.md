@@ -80,5 +80,3 @@ or else add a file to `tds/data` to be picked up by the `datasetScan`.
 The test id should be unique. The JSON schema used to validate a test is located in `run.py`.
 Note that the response code is not currently checked in the tests but you can see if requests failed in the logs (`results/run.log`).
 
-## TODO:
-- cli interface to run subset of tests

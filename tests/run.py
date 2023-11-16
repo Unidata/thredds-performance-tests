@@ -82,6 +82,14 @@ def parse_and_validate_configs():
     return output
 
 
+def get_single_test_config(test_configs, id):
+    tests = test_configs.items()
+    test = [test for k, v in tests for test in v["tests"] if test["id"] == id]
+    if not test:
+        raise ValueError("Test case with id: '" + id + "' not found.")
+    return {"cli_testcase": {"tests": test}}
+
+
 def run_tests(test_configs, args):
     df_list = []
 
@@ -168,6 +176,13 @@ def parse_cli_args():
         type=int,
         help="Maximum seconds to spend per test case."
     )
+    parser.add_argument(
+        "-c",
+        "--testcase",
+        nargs="?",
+        type=str,
+        help="Specify a specific test case by ID to run"
+    )
     return parser.parse_args()
 
 
@@ -205,10 +220,12 @@ def main():
 
     args = parse_cli_args()
     test_configs = parse_and_validate_configs()
+    to_test = (test_configs if args.testcase is None
+               else get_single_test_config(test_configs, args.testcase))
 
     check_connection()
     version_df = get_tds_version()
-    df = run_tests(test_configs, args)
+    df = run_tests(to_test, args)
     write_to_csv(version_df, df)
 
 
