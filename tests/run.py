@@ -229,7 +229,7 @@ def main():
     logging.basicConfig(
         filename=os.path.join(RESULTS_DIR, "run.log"),
         level=logging.INFO,
-        filemode="w")
+        filemode="a")
 
     args = parse_cli_args()
     test_configs = parse_and_validate_configs(args)
