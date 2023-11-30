@@ -14,4 +14,4 @@ COPY configs configs
 COPY run.py run.py
 COPY version version
 
-CMD [ "python", "./run.py" ]
+ENTRYPOINT [ "python", "./run.py" ]
