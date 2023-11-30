@@ -153,8 +153,11 @@ def write_to_csv(version_df, df):
     data_to_write = median_time.rename(columns=selector)[[*selector.values()]]
     to_write = data_to_write.merge(version_df, on="datetime")
 
+    output_path = os.path.join(RESULTS_DIR, "results.csv")
     to_write.to_csv(
-        os.path.join(RESULTS_DIR, "results.csv"),
+        output_path,
+        mode="a",
+        header=not os.path.exists(output_path),
         index=False,
         quotechar='"',
         quoting=csv.QUOTE_NONNUMERIC
