@@ -69,10 +69,15 @@ def check_ids_are_unique(configs):
         raise ValueError("Expected test ids to be unique, but found:", ids)
 
 
-def parse_and_validate_configs():
+def parse_and_validate_configs(args):
     output = {}
 
-    for config_file in glob.glob(os.path.join(CONFIG_DIR, "**", "*")):
+    files = glob.glob(os.path.join(args.testdir, "**", "*.json"),
+                      recursive=True)
+    if not files:
+        raise ValueError("No test files found in path: " + args.testdir)
+
+    for config_file in files:
         with open(config_file, "r") as file_handle:
             json_contents = json.load(file_handle)
             jsonschema.validate(json_contents, schema=CONFIG_SCHEMA)
@@ -183,6 +188,14 @@ def parse_cli_args():
         type=str,
         help="Specify a specific test case by ID to run"
     )
+    parser.add_argument(
+        "-d",
+        "--testdir",
+        nargs="?",
+        default=CONFIG_DIR,
+        type=str,
+        help="Specify a sub directory of tests to run"
+    )
     return parser.parse_args()
 
 
@@ -219,7 +232,7 @@ def main():
         filemode="w")
 
     args = parse_cli_args()
-    test_configs = parse_and_validate_configs()
+    test_configs = parse_and_validate_configs(args)
     to_test = (test_configs if args.testcase is None
                else get_single_test_config(test_configs, args.testcase))
 
