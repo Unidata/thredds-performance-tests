@@ -72,7 +72,7 @@ def check_ids_are_unique(configs):
 def parse_and_validate_configs():
     output = {}
 
-    for config_file in glob.glob(os.path.join(CONFIG_DIR, "*")):
+    for config_file in glob.glob(os.path.join(CONFIG_DIR, "**", "*")):
         with open(config_file, "r") as file_handle:
             json_contents = json.load(file_handle)
             jsonschema.validate(json_contents, schema=CONFIG_SCHEMA)
