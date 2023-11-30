@@ -1,0 +1,19 @@
+{
+    "name" : "Enhancements tests with caching",
+    "id" : "enhancements_caching",
+    "description" : "Test datasets with enhancements and caching",
+    "tests" : [
+        {
+            "name" : "Enhanced dataset page with NCSS and caching",
+            "id" : "enhancements_dataset_caching",
+            "description" : "Load NCSS dataset page for enhanced dataset with caching",
+            "url" : "ncss/grid/testAll/testEnhancements.nc/dataset.html"
+        },
+        {
+            "name" : "Subset enhanced dataset with NCSS and caching",
+            "id" : "enhancements_subset_caching",
+            "description" : "Write enhanced dataset as netcdf3 through NCSS with caching",
+            "url" : "ncss/grid/testAll/testEnhancements.nc?var=enhanceAll&north=90.000&west=.900&east=100.900&south=.900&horizStride=1&time_start=2000-01-02T00:00:00Z&time_end=2000-04-10T19:12:00.264Z&accept=netcdf3"
+        }
+    ]
+}
