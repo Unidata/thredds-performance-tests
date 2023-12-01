@@ -2,7 +2,7 @@
 
 # start tds, no caching config
 cd tds/
-docker build -t thredds-performance-tests:5.5-SNAPSHOT .
+docker build --no-cache -t thredds-performance-tests:5.5-SNAPSHOT .
 docker compose up -d tds-no-caching-network-host
 until docker inspect --format "{{json .State.Health.Status }}" thredds-performance-tests\
 | grep -m 1 '"healthy"'; do sleep 1 ; done
@@ -14,7 +14,7 @@ docker cp thredds-performance-tests:/usr/local/tomcat/webapps/thredds/META-INF/M
 # run tests for no caching config
 cd ../tests/
 mkdir -p results/
-docker build -t performance-tests:latest .
+docker build --no-cache -t performance-tests:latest .
 docker run --rm --network="host" -v ./results/:/usr/tests/results/ --user $(id -u):$(id -g) performance-tests -d /usr/tests/configs/no_caching_tests
 
 # stop tds
