@@ -1,5 +1,5 @@
 #!/bin/sh
-docker compose up -d tds-default
+docker compose up -d tds-caching
 until docker inspect --format "{{json .State.Health.Status }}" thredds-performance-tests\
 | grep -m 1 '"healthy"'; do sleep 1 ; done
 

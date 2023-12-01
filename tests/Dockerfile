@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-WORKDIR /usr/src/app
+WORKDIR /usr/tests
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt && \
@@ -14,4 +14,4 @@ COPY configs configs
 COPY run.py run.py
 COPY version version
 
-CMD [ "python", "./run.py" ]
+ENTRYPOINT [ "python", "./run.py" ]
