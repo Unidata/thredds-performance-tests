@@ -59,7 +59,7 @@ RESULTS_DIR = os.path.join(".", "results")
 VERSION_FILE = os.path.join(".", "version", "MANIFEST.MF")
 TIME = str(datetime.now().isoformat())
 REQUESTS = 1000
-TIMELIMIT = 10
+TIMELIMIT = 60
 
 
 def check_ids_are_unique(configs):
