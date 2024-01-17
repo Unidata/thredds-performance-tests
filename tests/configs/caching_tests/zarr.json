@@ -1,0 +1,25 @@
+{
+    "name" : "Zarr Tests",
+    "id" : "zarr",
+    "description" : "Test Zarr files",
+    "tests" : [
+        {
+            "name" : "Zarr directory with OPeNDAP with caching",
+            "id" : "zarr_dir_opendap_caching",
+            "description" : "Zarr directory viewed through OPenDAP with caching",
+            "url" : "dodsC/test/zarr/zarr_test_data.zarr.dds"
+        },
+        {
+            "name" : "Zarr zip file with OPeNDAP with caching",
+            "id" : "zarr_zip_opendap_caching",
+            "description" : "Zarr zip file viewed through OPenDAP with caching",
+            "url" : "dodsC/test/zarr/zarr_test_data.zip.dds"
+        },
+        {
+            "name" : "S3 Zarr directory with OPeNDAP with caching",
+            "id" : "zarr_s3_opendap_caching",
+            "description" : "S3 Zarr directory viewed through OPenDAP with caching",
+            "url" : "dodsC/s3-zarr/zarr_test_data.zarr/.dds"
+        }
+    ]
+}
