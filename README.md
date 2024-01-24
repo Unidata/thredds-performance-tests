@@ -12,7 +12,7 @@ Currently the test data is in a sub directory in the [thredds-test-data](https:/
 DATA_DIR=/my/path/to/thredds-test-data/local/thredds-test-data/cdmUnitTest/thredds-performance-tests
 ```
 
-To start TDS (with no caching config), run all tests, and stop TDS:
+To start TDS, run all tests, and stop TDS:
 ```
 ./run-all.sh
 ```
@@ -51,7 +51,7 @@ To stop:
 ### With docker
 ```
 cd tests/
-docker build -t performance-tests:latest .
+docker build --no-cache -t performance-tests:latest .
 docker run --rm --network="host" -v ./results/:/usr/tests/results/ performance-tests
 ```
 
