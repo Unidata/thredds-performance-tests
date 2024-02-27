@@ -1,7 +1,7 @@
 {
-    "name" : "Zarr Tests",
-    "id" : "zarr",
-    "description" : "Test Zarr files",
+    "name" : "Zarr Tests with caching",
+    "id" : "zarr_caching",
+    "description" : "Test Zarr files with caching",
     "tests" : [
         {
             "name" : "Zarr directory with OPeNDAP with caching",
