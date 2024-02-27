@@ -1,0 +1,13 @@
+{
+    "name" : "WMS Tests with caching",
+    "id" : "wms_caching",
+    "description" : "Test WMS with caching",
+    "tests" : [
+        {
+            "name" : "Test WMS GetMap with caching",
+            "id" : "wms_getmap_caching",
+            "description" : "Test WMS GetMap with caching",
+            "url" : "wms/testAll/gfs-aggregation/GFS_CONUS_80km_20120418_1200.nc?FORMAT=image%2Fpng&TRANSPARENT=TRUE&STYLES=default-scalar%2Fpsu-viridis&LAYERS=Relative_humidity&TIME=2012-04-19T06%3A00%3A00.000Z&ELEVATION=100&COLORSCALERANGE=-50%2C50&NUMCOLORBANDS=20&ABOVEMAXCOLOR=extend&BELOWMINCOLOR=extend&BGCOLOR=extend&LOGSCALE=false&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG%3A4326&BBOX=-180,-10,-30,70&WIDTH=256&HEIGHT=256"
+        }
+    ]
+}
