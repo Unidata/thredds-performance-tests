@@ -2,7 +2,7 @@ version: '3'
 
 services:
   tds-caching:
-    image: thredds-performance-tests:5.5-SNAPSHOT
+    image: thredds-performance-tests:latest
     ports:
       - "8080:8080"
       - "443:8443"
@@ -18,7 +18,7 @@ services:
       - "compose.env"
 
   tds-no-caching:
-    image: thredds-performance-tests:5.5-SNAPSHOT
+    image: thredds-performance-tests:latest
     ports:
       - "8080:8080"
       - "443:8443"
@@ -34,7 +34,7 @@ services:
       - "compose.env"
 
   tds-caching-network-host:
-    image: thredds-performance-tests:5.5-SNAPSHOT
+    image: thredds-performance-tests:latest
     network_mode: host
     container_name: tds-caching-network-host
     volumes:
@@ -47,7 +47,7 @@ services:
       - "compose.env"
 
   tds-no-caching-network-host:
-    image: thredds-performance-tests:5.5-SNAPSHOT
+    image: thredds-performance-tests:latest
     network_mode: host
     container_name: tds-no-caching-network-host
     volumes:

@@ -2,7 +2,7 @@
 
 # start tds, no caching config
 cd tds/
-docker build --no-cache -t thredds-performance-tests:5.5-SNAPSHOT .
+docker build --no-cache -t thredds-performance-tests:latest .
 docker compose up -d tds-no-caching-network-host
 until docker inspect --format "{{json .State.Health.Status }}" tds-no-caching-network-host\
 | grep -m 1 '"healthy"'; do sleep 1 ; done
