@@ -23,13 +23,13 @@ We build a TDS docker image so we are sure to get the latest snapshot. For now, 
 
 In the tds directory (`cd tds/`), build the testing docker image:
 ```
-docker build -t thredds-performance-tests:5.5-SNAPSHOT .
+docker build -t thredds-performance-tests:latest .
 ```
 
 To build using a local war file instead of the one from nexus, use:
 ```
 cp /path/to/my/thredds.war local-war-file/
-docker build -t thredds-performance-tests:5.5-SNAPSHOT --build-arg USE_LOCAL_WAR=true .
+docker build -t thredds-performance-tests:latest --build-arg USE_LOCAL_WAR=true .
 ```
 
 To start TDS with caching
