@@ -1,6 +1,6 @@
 ARG USE_LOCAL_WAR=false
 
-FROM unidata/tomcat-docker:8.5-jdk11 AS base
+FROM unidata/tomcat-docker:9-jdk17 AS base
 
 MAINTAINER Unidata
 
