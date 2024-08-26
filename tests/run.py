@@ -53,7 +53,7 @@ CONFIG_SCHEMA = {
     }
 }
 
-BASE_URL = "http://localhost:8080/thredds/"
+BASE_URL = "http://localhost:8081/thredds/"
 CONFIG_DIR = os.path.join(".", "configs")
 RESULTS_DIR = os.path.join(".", "results")
 VERSION_FILE = os.path.join(".", "version", "MANIFEST.MF")

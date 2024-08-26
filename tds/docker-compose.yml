@@ -1,10 +1,8 @@
-version: '3'
-
 services:
   tds-caching:
     image: thredds-performance-tests:latest
     ports:
-      - "8080:8080"
+      - "8081:8081"
       - "443:8443"
       - "8443:8443"
     container_name: tds-caching
@@ -20,7 +18,7 @@ services:
   tds-no-caching:
     image: thredds-performance-tests:latest
     ports:
-      - "8080:8080"
+      - "8081:8081"
       - "443:8443"
       - "8443:8443"
     container_name: tds-no-caching
