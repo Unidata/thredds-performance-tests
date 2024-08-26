@@ -14,6 +14,7 @@ ENV THREDDS_WAR_URL https://downloads.unidata.ucar.edu/tds/5.6/thredds-5.6-SNAPS
 
 COPY files/setenv.sh ${CATALINA_HOME}/bin/setenv.sh
 COPY files/javaopts.sh ${CATALINA_HOME}/bin/javaopts.sh
+COPY files/server.xml ${CATALINA_HOME}/conf/
 
 # Install necessary packages
 RUN apt-get update && \
@@ -36,7 +37,7 @@ RUN unzip thredds.war -d ${CATALINA_HOME}/webapps/thredds/ && \
     chmod 755 ${CATALINA_HOME}/bin/*.sh && \
     mkdir -p ${CATALINA_HOME}/javaUtilPrefs/.systemPrefs
 
-EXPOSE 8080 8443
+EXPOSE 8081 8443
 
 WORKDIR ${CATALINA_HOME}
 
@@ -47,4 +48,4 @@ ENTRYPOINT ["/entrypoint.sh"]
 CMD ["catalina.sh", "run"]
 
 HEALTHCHECK --interval=10s --timeout=3s \
-    CMD curl --fail 'http://localhost:8080/thredds/catalog.html' || exit 1
+    CMD curl --fail 'http://localhost:8081/thredds/catalog.html' || exit 1
