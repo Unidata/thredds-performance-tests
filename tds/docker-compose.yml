@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   tds-caching:
     image: thredds-performance-tests:latest

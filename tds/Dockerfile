@@ -2,15 +2,15 @@ ARG USE_LOCAL_WAR=false
 
 FROM unidata/tomcat-docker:10-jdk17 AS base
 
-MAINTAINER Unidata
+LABEL org.opencontainers.image.authors="Unidata"
 
 USER root
 
 # tds envs
-ENV TDS_CONTENT_ROOT_PATH /usr/local/tomcat/content
-ENV THREDDS_XMX_SIZE 4G
-ENV THREDDS_XMS_SIZE 4G
-ENV THREDDS_WAR_URL https://downloads.unidata.ucar.edu/tds/5.6/thredds-5.6-SNAPSHOT.war
+ENV TDS_CONTENT_ROOT_PATH=/usr/local/tomcat/content
+ENV THREDDS_XMX_SIZE=4G
+ENV THREDDS_XMS_SIZE=4G
+ENV THREDDS_WAR_URL=https://downloads.unidata.ucar.edu/tds/5.6/thredds-5.6-SNAPSHOT.war
 
 COPY files/setenv.sh ${CATALINA_HOME}/bin/setenv.sh
 COPY files/javaopts.sh ${CATALINA_HOME}/bin/javaopts.sh
