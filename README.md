@@ -34,7 +34,7 @@ docker build -t thredds-performance-tests:latest --build-arg USE_LOCAL_WAR=true 
 
 To start TDS with caching
 ```
-./start-default.sh
+./start-caching.sh
 ```
 or without caching
 ```
